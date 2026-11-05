@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="My Accounter — a timeless personal finance tracker. Track revenue and expenses, or keep the full accounting equation." />
+    <meta name="theme-color" content="#F6F3EC" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="My Accounter" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231B1915'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='30' fill='%23F6F3EC'%3EA%3C/text%3E%3Crect x='20' y='44.5' width='24' height='2.4' rx='1.2' fill='%23C9A55C'/%3E%3Crect x='20' y='49.5' width='24' height='2.4' rx='1.2' fill='%23C9A55C'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Playfair+Display:ital,wght@0,500..700;1,500..700&display=swap" />
+    <title>My Accounter — Personal Finance Tracker</title>
+    <script>
+      (function () {
+        try {
+          var a = JSON.parse(localStorage.getItem('myaccounter:appearance') || 'null') || {};
+          var t = a.theme || 'system';
+          var d = t === 'dark' || (t === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var r = document.documentElement;
+          if (d) r.classList.add('dark');
+          var v = a.vars && a.vars[d ? 'dark' : 'light'];
+          if (v) for (var k in v) r.style.setProperty(k, v[k]);
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', d ? '#0E0F11' : '#F6F3EC');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>My Accounter requires JavaScript to run.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
